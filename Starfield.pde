@@ -24,21 +24,21 @@ class NormalParticle
 {
 	//your code here
 	double nX,nY,nColor,nTheta,nSpeed;
-	Particle()
+	NormalParticle()
 	{
 		nX = Math.random()*401;
 		nY = Math.random()*401;
-		//nTheta = 
-		//nSpeed = ;
+		nTheta = (double)(Math.random()*2*Math.pi)
+		nSpeed = (double)(Math.random()*10);
 	}
 	void move()
 	{
-		x = x + Math.cos((double)(Math.random()*6.28));
-		y = y + Math.sin((double)(Math.random()*6.28));
+		nX = nX + Math.cos((double)(Math.random()*6.28));
+		nY = nY + Math.sin((double)(Math.random()*6.28));
 	}
 	void show()
 	{
-		ellipse(nX,nY,5,5);
+		ellipse(200,200,5,5);
 	}
 }
 // interface Particle
