@@ -1,44 +1,45 @@
 //your code here
-NormalParticle bob;
-NormalParticle[] particles;
+NormalParticle[] star;
 void setup()
 {
 	//your code here
 	size(400,400);
-	bob = new NormalParticle();
-	particles = new NormalParticle[300];
-	for (int i =0; i < particles.length; i++)
-		particles [i] = new NormalParticle();
+	star = new NormalParticle[300];
+	for (int i =0; i < star.length; i++)
+		star [i] = new NormalParticle(200,200);
 }
 void draw()
 {
 	//your code here
 	background(0);
-	for (int i = 0; i < particles.length; i++)
+	for (int i = 0; i < star.length; i++)
 	{
-		particles[i].move();
-		particles[i].show();
+		star[i].move();
+		star[i].show();
 	}
 }
 class NormalParticle
 {
 	//your code here
-	double nX,nY,nColor,nTheta,nSpeed;
-	NormalParticle()
+	int nColor;
+	double nX,nY,dTheta,dSpeed;
+	NormalParticle(double x, double y)
 	{
-		nX = Math.random()*401;
-		nY = Math.random()*401;
-		nTheta = (double)(Math.random()*2*Math.pi)
-		nSpeed = (double)(Math.random()*10);
+		nX = x;
+		nY = y;
+		nColor = color(255);
+		dTheta = (Math.random()*2*Math.PI);
+		dSpeed = Math.random() * 10;
 	}
 	void move()
 	{
-		nX = nX + Math.cos((double)(Math.random()*6.28));
-		nY = nY + Math.sin((double)(Math.random()*6.28));
+		nX = nX + (dSpeed * Math.cos(dTheta));
+		nY = nY + (dSpeed * Math.sin(dTheta));
 	}
 	void show()
 	{
-		ellipse(200,200,5,5);
+		fill(nColor);
+		ellipse((float)nX,(float)nY,25,25);
 	}
 }
 // interface Particle
