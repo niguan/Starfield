@@ -6,9 +6,9 @@ void setup()
 	size(700,700);
 	star = new Particle[400];
 	for (int i =0; i < star.length; i++)
-		star [i] = new NormalParticle(350,350);
+		star [i] = new NormalParticle();
 	star [50] = new OddballParticle(300,300);
-	//star[1] = new JumboParticle(300,300);
+	star[1] = new JumboParticle();
 }
 void draw()
 {
@@ -25,10 +25,10 @@ class NormalParticle implements Particle
 	//your code here
 	int nColor;
 	double nX,nY,dTheta,dSpeed;
-	NormalParticle(double x, double y)
+	NormalParticle()
 	{
-		nX = x;
-		nY = y;
+		nX = 350;
+		nY = 350;
 		nColor = color(255);
 		dTheta = (Math.random()*2*Math.PI);
 		dSpeed = Math.random() * 10;
@@ -105,18 +105,12 @@ class NormalParticle implements Particle
 		ellipse((float)oddX,(float)oddY,25,25);
 	}
  }
- // class JumboParticle extends NormalParticle
- // {
- // 	//your code here
- // 	double jumboX,jumboY;
- // 	JumboParticle(double x,double y)
- // 	{
- // 		jumboX = x;
- // 		jumboY = y;
- // 	}
- // 	void show()
- // 	{
- // 		fill(0,255,0);
- // 		rect((float)nX,(float)nY,50,50);
- // 	}
- // }
+ class JumboParticle extends NormalParticle
+ {
+ 	//your code here
+ 	void show()
+ 	{
+ 		fill(0,255,0);
+ 		triangle((float)nX,(float)nY,(float)nX-20,(float)nY+20,(float)nX+20,(float)nY+20);
+ 	}
+ }
